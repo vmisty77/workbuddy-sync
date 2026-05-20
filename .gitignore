@@ -1,0 +1,9 @@
+# Ignore skill dependencies (large binary/node_modules)
+skills/*/node_modules/
+skills/*/.git/
+skills/*/*.exe
+skills/*/*.dll
+skills/*/__pycache__/
+*.zip
+*.tar.gz
+.DS_Store
