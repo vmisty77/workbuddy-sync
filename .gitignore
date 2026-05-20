@@ -1,9 +1,20 @@
+# Ignore everything except skills, memory, and sync scripts
+*
+/*/
+!.gitignore
+!sync.sh
+!setup-device.sh
+!skills/
+!memory/
+
 # Ignore skill dependencies (large binary/node_modules)
 skills/*/node_modules/
 skills/*/.git/
 skills/*/*.exe
 skills/*/*.dll
 skills/*/__pycache__/
+
+# Ignore misc
 *.zip
 *.tar.gz
 .DS_Store
