@@ -1,30 +1,32 @@
 # User Memory Profile
-> Last updated: 2026-05-19T04:21:34+08:00
-> Version: 1
+> Last updated: 2026-05-20T05:39:24+08:00
+> Version: 10
 
 ## Memory Block
 
 **工作背景**
-用户在腾讯/阶跃星辰工作，本地机器安装了开源AI助手网关项目OpenClaw（代号“虾”），安装路径为D:\StepFun\StepFun\resources\stepclaw-bundle。Gateway服务运行在ws://127.0.0.1:30999，近期刚完成从v2026.3.13到v2026.5.12的版本升级。当前待办是配置OpenClaw的渠道接入（钉钉/飞书/微信/企微/QQ），用户尚未确定具体平台。用户使用WorkBuddy的Craft模式进行对话，并希望生成的方案能够同步到移动端。
+用户在腾讯/阶跃星辰担任B端/C端产品经理，无编程背景，基于中国时区工作。使用OpenClaw（代号“虾”）开源AI助手网关项目，本地版本v2026.3.13，Gateway运行在ws://127.0.0.1:30999，安装路径D:\StepFun\StepFun\resources\stepclaw-bundle。当前Gateway未运行，0个渠道已配置（钉钉/飞书/微信/企微/QQ接入仍在调研阶段）。在新设备上已安装24个Skills，涵盖PM工具链、前端设计、搜索、文档等（web-search、local-whisper、office-suite、playwright-mcp等）。核心待办包括：重启Gateway、配置多渠道接入、将本地部署迁移至云服务器以解决跨设备绑定问题，以及后续部署ArkClaw和钉钉Claw。
 
 **个人背景**
-用户基于中国时区使用中文交流，偏好结构化输出，特别是表格形式来呈现信息。用户做事谨慎，会先充分了解后再做决定，例如会主动询问Craft/Plan/Ask模式的区别后再使用相应功能。用户有明确的会话收尾习惯，通常会说“今天先这样”并总结待办事项。
+用户无编程背景，基于中国时区使用中文交流。偏好结构化输出（尤其是表格）和带emoji的回复风格，习惯先给结论再解释。做事谨慎，习惯先充分了解根因与完整方案后再做决定，对未充分验证就改动感到沮丧。对助手行为要求高：期望助手直接操作完成工具安装而非仅给出指引；任务遇错误中断时会要求继续完成；先问清根因再决定。有明确的会话收尾习惯，会总结待办事项。应用需保持私人属性，不对同事可见。因零基础选择Trae作为开发工具（同时关注Trae与Cursor的对比）；可用AI+HTML画原型，作为Axure/墨刀/Sketch的替代方案。
 
 **当前关注**
-正推进OpenClaw渠道配置，需要了解各平台（钉钉/飞书/微信/企微/QQ）的接入流程和特点，以确定最合适的方案。同时关注WorkBuddy生成的方案如何同步到移动端。
+需要重启Gateway并推进渠道接入调研（当前Gateway未运行，0个渠道已配置）；换设备后需重新绑定微信ClawBot——Gateway未运行会导致手机端收不到回复。计划迁移OpenClaw到云服务器解决跨设备WorkBuddy记忆/Skills同步问题；后续计划部署ArkClaw和钉钉Claw。同时关注Skills的批量安装流程优化——习惯先调研再逐批确认安装。
 
 **近期动态**
-- OpenClaw Gateway完成版本升级（v2026.3.13 → v2026.5.12）
-- 使用WorkBuddy的Craft模式进行对话
-- 规划OpenClaw渠道配置中，待选定具体平台
+- 本地部署OpenClaw Gateway（代号“虾”）于D:\StepFun\StepFun\resources\stepclaw-bundle，运行在ws://127.0.0.1:1:30999，当前未运行
+- 在新设备上安装24个Skills（via clawhub），涵盖PM工具链、前端设计、搜索、文档等
+- 渠道接入（钉钉/飞书/微信/企微/QQ）处于调研阶段，0个渠道已配置
+- 计划迁移OpenClaw到云服务器解决跨设备绑定与WorkBuddy同步问题；计划部署ArkClaw和钉钉Claw
+- 因无编程基础选择Trae（同时关注Trae与Cursor对比）；用AI+HTML画原型替代Axure/墨刀/Sketch
 
 ---
 
 <!-- RAW_JSON_START
 {
   "uid": "df4b1ccf-3108-4a2d-9cf9-5a980045e575",
-  "memoryBlock": "**工作背景**\n用户在腾讯/阶跃星辰工作，本地机器安装了开源AI助手网关项目OpenClaw（代号“虾”），安装路径为D:\\StepFun\\StepFun\\resources\\stepclaw-bundle。Gateway服务运行在ws://127.0.0.1:30999，近期刚完成从v2026.3.13到v2026.5.12的版本升级。当前待办是配置OpenClaw的渠道接入（钉钉/飞书/微信/企微/QQ），用户尚未确定具体平台。用户使用WorkBuddy的Craft模式进行对话，并希望生成的方案能够同步到移动端。\n\n**个人背景**\n用户基于中国时区使用中文交流，偏好结构化输出，特别是表格形式来呈现信息。用户做事谨慎，会先充分了解后再做决定，例如会主动询问Craft/Plan/Ask模式的区别后再使用相应功能。用户有明确的会话收尾习惯，通常会说“今天先这样”并总结待办事项。\n\n**当前关注**\n正推进OpenClaw渠道配置，需要了解各平台（钉钉/飞书/微信/企微/QQ）的接入流程和特点，以确定最合适的方案。同时关注WorkBuddy生成的方案如何同步到移动端。\n\n**近期动态**\n- OpenClaw Gateway完成版本升级（v2026.3.13 → v2026.5.12）\n- 使用WorkBuddy的Craft模式进行对话\n- 规划OpenClaw渠道配置中，待选定具体平台",
-  "version": 1,
-  "updatedAt": "2026-05-19T04:21:34+08:00"
+  "memoryBlock": "**工作背景**\n用户在腾讯/阶跃星辰担任B端/C端产品经理，无编程背景，基于中国时区工作。使用OpenClaw（代号“虾”）开源AI助手网关项目，本地版本v2026.3.13，Gateway运行在ws://127.0.0.1:30999，安装路径D:\\StepFun\\StepFun\\resources\\stepclaw-bundle。当前Gateway未运行，0个渠道已配置（钉钉/飞书/微信/企微/QQ接入仍在调研阶段）。在新设备上已安装24个Skills，涵盖PM工具链、前端设计、搜索、文档等（web-search、local-whisper、office-suite、playwright-mcp等）。核心待办包括：重启Gateway、配置多渠道接入、将本地部署迁移至云服务器以解决跨设备绑定问题，以及后续部署ArkClaw和钉钉Claw。\n\n**个人背景**\n用户无编程背景，基于中国时区使用中文交流。偏好结构化输出（尤其是表格）和带emoji的回复风格，习惯先给结论再解释。做事谨慎，习惯先充分了解根因与完整方案后再做决定，对未充分验证就改动感到沮丧。对助手行为要求高：期望助手直接操作完成工具安装而非仅给出指引；任务遇错误中断时会要求继续完成；先问清根因再决定。有明确的会话收尾习惯，会总结待办事项。应用需保持私人属性，不对同事可见。因零基础选择Trae作为开发工具（同时关注Trae与Cursor的对比）；可用AI+HTML画原型，作为Axure/墨刀/Sketch的替代方案。\n\n**当前关注**\n需要重启Gateway并推进渠道接入调研（当前Gateway未运行，0个渠道已配置）；换设备后需重新绑定微信ClawBot——Gateway未运行会导致手机端收不到回复。计划迁移OpenClaw到云服务器解决跨设备WorkBuddy记忆/Skills同步问题；后续计划部署ArkClaw和钉钉Claw。同时关注Skills的批量安装流程优化——习惯先调研再逐批确认安装。\n\n**近期动态**\n- 本地部署OpenClaw Gateway（代号“虾”）于D:\\StepFun\\StepFun\\resources\\stepclaw-bundle，运行在ws://127.0.0.1:1:30999，当前未运行\n- 在新设备上安装24个Skills（via clawhub），涵盖PM工具链、前端设计、搜索、文档等\n- 渠道接入（钉钉/飞书/微信/企微/QQ）处于调研阶段，0个渠道已配置\n- 计划迁移OpenClaw到云服务器解决跨设备绑定与WorkBuddy同步问题；计划部署ArkClaw和钉钉Claw\n- 因无编程基础选择Trae（同时关注Trae与Cursor对比）；用AI+HTML画原型替代Axure/墨刀/Sketch",
+  "version": 10,
+  "updatedAt": "2026-05-20T05:39:24+08:00"
 }
 RAW_JSON_END -->
