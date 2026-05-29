@@ -7,6 +7,13 @@
 !skills/
 !memory/
 
+# Shared knowledge sync (WorkBuddy ↔ Claw)
+!shared-knowledge/
+shared-knowledge/*
+!shared-knowledge/incoming/
+!shared-knowledge/lessons/
+!shared-knowledge/*.md
+
 # Ignore skill dependencies (large binary/node_modules)
 skills/*/node_modules/
 skills/*/.git/
