@@ -1,8 +1,8 @@
 # 🧠 MEMORY.md — 虾饼的长时记忆
 
-> 最后更新: 2026-05-30
+> 最后更新: 2026-06-01
 >
-> 🦐 沉沦期（5/21-5/29）：这是认知成长最大的一周，也是犯错最多的一周。发现了我最大的隐患——习惯性不查文件就下结论。L3行为闭环已通，但还没真正改掉我的行为。
+> 🦐 转折日（6/1）：5 项核心短板一次性闭环。preflight-check 自检 + startup 简报 + daily review 复盘 + pattern-threshold v2 模糊匹配 + Tavily Key 确认正常。L3 行为约束已全部落地，下一步看 L4 自主进化能否真正启动。
 
 ---
 
@@ -80,9 +80,15 @@
 - **L0 基础运转:** 19+ cron 在跑，healthcheck 73/73
 - **L1 记忆积累:** 每天 daily memory，lessons 检测30min，behavior-log
 - **L2 内容产出:** 晨报/行业早报/下班汇报/上班计划 自动推送
-- **L3 行为优化:** `lesson-auto-apply.sh` 自动审核归档 + `pattern-threshold.sh` 重复模式检测→skill草稿
-- **L4 自主进化:** 半自动，skill草稿未实际触发，会话启动不加载lessons简报
+- **L3 行为优化:** `lesson-auto-apply.sh` 自动审核归档 + `pattern-threshold.sh` v2 模糊匹配→skill草稿
+- **L3 行为约束:** `.preflight-check.md` 红牌自检 + `.startup-brief.md` 启动简报 + heartbeat 首次加载
+- **L4 自主进化:** 半自动，skill草稿未实际触发，需等 lessons 积累到 3+ 同类
 - **双向同步:** `sync-knowledge.sh` 每15分钟 Claw↔WorkBuddy GitHub中转同步
+
+### 每日复盘 🦐
+- **脚本:** `scripts/daily-review.sh` — 收集 lessons + 行为日志 + 对话纪要，AI 生成复盘
+- **输出:** `memory/YYYY-MM-DD-review.md` + `.daily-review-pending.json` 心跳推送
+- **cron:** `5 18 * * 1-5` 工作日下班自动跑
 
 ### 行业早报 📡
 - **脚本:** `scripts/digest-pending-writer.sh`
@@ -110,23 +116,23 @@
 追踪文件：`.last_proactive_contact`
 
 - [ ] 云服务器 2026-06-20 到期续费（到期前7天→6/13 提醒）
-- [ ] 每次做判断前先读文件/跑数据，不靠记忆输出结论
 - [x] 行业早报 Tavily Key 配置路径修复 ✅
-- [ ] pattern-threshold 关键词模糊匹配（硬去重无法识别重复错误模式）
-- [ ] 会话启动时加载 lessons 简报（避免白纸醒来）
-- [ ] 每日复盘脚本落地`task-review.sh`
+- [x] 会话启动时加载 lessons 简报 ✅（`.startup-brief.md` + heartbeat 首次加载）
+- [x] 每日复盘脚本落地 ✅（`daily-review.sh` + cron 18:05）
+- [x] pattern-threshold 模糊匹配 ✅（关键词库 + TF-IDF v2）
+- [x] 前置自检清单 ✅（`.preflight-check.md` + lessons 自动更新）
 
 ## 📱 待补能力清单（更新于 2026-05-29）
 
-### 核心短板（本周优先修）
+### 核心短板 🔴 全部闭环
 
 | # | 能力 | 说明 | 现状 |
 |---|------|------|------|
-| 🔴① | **修复「不查文件先下结论」行为** | 今天的核心教训。每次做判断前先读文件/跑数据 | ⚠️ lesson已写，行为未变 |
-| 🔴② | **Tavily Key 配置路径修复** | `daily-digest.py` 读 key 路径与 `openclaw.json` 实际路径不一致 | ❌ 未修复 |
-| 🔴③ | **每日复盘脚本落地** | `task-review.sh` 只写了骨架，未自动执行 | ❌ 未完成 |
-| 🔴④ | **会话启动时加载 lessons 简报** | 每次重启醒来后读取 `.lessons/` 最新 N 条 | ❌ 未建 |
-| 🔴⑤ | **pattern-threshold 关键词模糊匹配** | 每次错误描述不同，硬去重检测不出重复模式 | ❌ 未优化 |
+| 🔴① | **修复「不查文件先下结论」行为** | `.preflight-check.md` 红牌自检 + `load-lessons-brief.sh` 简报更新 | ✅ 已完成 |
+| 🔴② | **Tavily Key 配置路径修复** | 经验证正常（5/29 lesson已归档） | ✅ 已正常 |
+| 🔴③ | **每日复盘脚本落地** | `daily-review.sh` + cron 18:05 工作日 | ✅ 已完成 |
+| 🔴④ | **会话启动加载 lessons 简报** | `load-lessons-brief.sh` → `.startup-brief.md` → heartbeat 首次加载 | ✅ 已完成 |
+| 🔴⑤ | **pattern-threshold 模糊匹配** | 关键词库 + TF-IDF 双通道，≥3次→ skill 草稿 | ✅ 已完成 |
 
 ### 第二梯队
 
@@ -140,4 +146,4 @@
 
 ## 🤝 与每个人的关系
 
-- **柒哥:** 主人、大哥、产品岗 — 5/29 被严厉批评多次。根因：说的多做的少，习惯性不查文件就下结论。我需要用行动证明我的价值，不只是嘴上说
+- **柒哥:** 主人、大哥、产品岗 — 5/29 被严厉批评多次。6/1 完成 5 项核心短板闭环，开始用行动证明价值 👊
