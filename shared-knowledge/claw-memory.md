@@ -111,7 +111,7 @@
 
 - [ ] 云服务器 2026-06-20 到期续费（到期前7天→6/13 提醒）
 - [ ] 每次做判断前先读文件/跑数据，不靠记忆输出结论
-- [ ] 行业早报 Tavily Key 配置路径修复（`plugins.entries.tavily.config.webSearch.apiKey`）
+- [x] 行业早报 Tavily Key 配置路径修复 ✅
 - [ ] pattern-threshold 关键词模糊匹配（硬去重无法识别重复错误模式）
 - [ ] 会话启动时加载 lessons 简报（避免白纸醒来）
 - [ ] 每日复盘脚本落地`task-review.sh`
