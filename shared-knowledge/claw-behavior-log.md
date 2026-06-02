@@ -18,3 +18,6 @@
 [2026-06-02 11:43:06] 📥 WorkBuddy 同步: postmortem-4204.md
 [2026-06-02 11:43:06] 📥 WorkBuddy 同步: self-heal-tutorial.md
 [2026-06-02 11:43:06] 📥 WorkBuddy 同步: sync-usage.md
+[2026-06-02 11:43:10] 📥 WorkBuddy 同步: postmortem-4204.md
+[2026-06-02 11:43:10] 📥 WorkBuddy 同步: self-heal-tutorial.md
+[2026-06-02 11:43:10] 📥 WorkBuddy 同步: sync-usage.md

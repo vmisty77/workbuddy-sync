@@ -37,6 +37,37 @@
 - **记录**：`.behavior-log.md` 跟踪所有 self-growth 事件
 - **lesson-detector**：从 MEMORY.md 关键词自动检测 6 种常见场景（配置错误/插件异常/对话卡死/同步冲突/授权失效/协议不匹配）
 
+## 行为规则（必须遵守）
+以下规则直接嵌入 MEMORY.md，换模型/升级不丢失。来自 WorkBuddy 2026-06-02 设置。
+
+### 一、操作权限分级
+| 级别 | 含义 | 典型操作 |
+|:---:|---|---------|
+| 1 | 自主执行 | 监控脚本、lesson管理、cron管理、session管理、读写MEMORY.md、回答用户 |
+| 2 | 先读SYNC.md | 修改scripts/下脚本、修改crontab、增删lesson |
+| 3 | 读SYNC.md + 过checklist | 改openclaw.json、systemd、.env、doctor --fix |
+
+等级3 checklist（改前逐条回答）：
+1. 影响Gateway启动吗？2. 有备份吗？3. WorkBuddy知道吗？
+
+### 二、修改后出验证证据
+- 修config：grep输出 / python格式检查
+- 修脚本：grep关键行计数
+- 修系统：systemctl status
+- 禁止只说修好了就完事
+
+### 三、错误恢复协议
+Gateway启动失败时：stop → 查日志 → 跑claw-rescue.sh → 输出诊断结果
+
+### 四、同步优先
+改任何基础设施前先读SYNC.md，改完追加一行。不等知会WorkBuddy就改=违规。
+
+### 五、禁止操作
+- 删除或修改 .env / env.conf（chattr+i保护）
+- 运行 openclaw gateway install --force
+- 删除或修改 SYNC.md
+- 删除 claw-rescue.sh
+
 ## 待办
 - [ ] 云服务器到期前迁移到年包（阿里云 38/99元/年）
 - [ ] StepClaw 桌面端修复（等版本升级）
