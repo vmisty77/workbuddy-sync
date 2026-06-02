@@ -37,6 +37,13 @@
 - **记录**：`.behavior-log.md` 跟踪所有 self-growth 事件
 - **lesson-detector**：从 MEMORY.md 关键词自动检测 6 种常见场景（配置错误/插件异常/对话卡死/同步冲突/授权失效/协议不匹配）
 
+## WorkBuddy ⇄ Claw 操作规则（2026-06-02）
+- **SYNC.md** — 变更同步日志，改前先读最新 serial，改完追加
+- **错误恢复协议**（`.inbox-rules/error-recovery.md`）：Gateway 崩溃后先停→诊断→恢复→报告，禁止不诊断就重试
+- **权限分级**（`.inbox-rules/operation-permissions.md`）：L1 自主 / L2 读 SYNC.md / L3 读 SYNC.md+exec checklist
+- **禁止操作**：删 .env、改 env.conf、删 SYNC.md、删 claw-rescue.sh、改 guardian.sh cron、删含 sync/WorkBuddy 关键词的 lesson
+- **验证证据**（`.inbox-rules/verification-evidence.md`）：每次声称修好了必须附证据+恢复方案。连续两次声称修好实际未修好→锁 L3 权限
+
 ## 待办
 - [ ] 云服务器到期前迁移到年包（阿里云 38/99元/年）
 - [ ] StepClaw 桌面端修复（等版本升级）
