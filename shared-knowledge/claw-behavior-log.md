@@ -9,3 +9,4 @@
 [2026-06-01 00:30:01] ✅ 自动批准: 2026-06-01-配置错误.md (场景: )
 [2026-06-02 10:05:52] 📥 WorkBuddy 同步: api-key-config.md
 [2026-06-02 10:05:52] 📥 WorkBuddy 同步: sync-protocol.md
+[2026-06-02 11:34:40] 📥 WorkBuddy 同步: workbuddy-rules-overview.md
