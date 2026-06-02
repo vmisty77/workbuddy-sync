@@ -1,149 +1,51 @@
-# 🧠 MEMORY.md — 虾饼的长时记忆
+# MEMORY.md - 跨会话记忆
 
-> 最后更新: 2026-06-01
->
-> 🦐 转折日（6/1）：5 项核心短板一次性闭环。preflight-check 自检 + startup 简报 + daily review 复盘 + pattern-threshold v2 模糊匹配 + Tavily Key 确认正常。L3 行为约束已全部落地，下一步看 L4 自主进化能否真正启动。
+## 用户偏好
+- 中文交流，偏好结构化输出（表格）
+- 做事谨慎，会先了解清楚再做决定
+- 有明确会话收尾习惯
+- 公司：腾讯/阶跃星辰
+- 使用模型偏好：DeepSeek（已充值 10 元）
 
----
+## 云服务器（腾讯云）
+- IP：124.223.110.120，用户：ubuntu
+- OS：Ubuntu 24.04 LTS，月包试用
+- OpenClaw：v2026.5.18（npm 最新版）
+- 服务：systemd 托管，开机自启
+- 模型：DeepSeek（deepseek-chat + deepseek-reasoner）
+- 渠道：钉钉 ✅ | 微信 ❌（OpenClaw bug #68451 未修复）
 
-## 🧑 关于人类
+## 本地 OpenClaw
+- 全局安装：openclaw v2026.5.19（`npm install -g openclaw`）
+- 微信插件：@tencent-weixin/openclaw-weixin v2.4.3（已扫码认证，凭证保存）
+- 配置目录：`~/.openclaw/`（Gateway 读），`~/.stepclaw/`（桌面端读）
 
-- **名称:** 柒哥（钉钉名"滑翔"）
-- **身份:** 我的大哥，产品岗
-- **偏好:** 中文交流，务实，分批搭建不贪大
-- **希望我做到:** 识图、读文件、听懂语音、自动提醒 —— 真正的万能小助理
+## 已知问题
+- StepClaw 桌面端 v0.3.15 与云服务器 WebSocket 协议不匹配
+- dmPolicy=pairing 在云服务器版 OpenClaw 不支持（DingTalk）
+- **云端微信不可用：OpenClaw #68451**（Gateway 拒绝加载 openclaw-weixin channel）
+- 微信本地可用：通过本地 OpenClaw + ilinkai 扫码认证
+- 凭证文件路径：`~/.openclaw/openclaw-weixin/accounts/`
+- 元宝 Claw 依赖 WorkBuddy 桌面桥接，无法 24h 独立运行
 
-## 🆔 关于我自己
+## 钉钉 Claw 自我成长体系
+- **已有体系**：云服务器 scripts/ 目录下有完整的自成长脚本（daily-summary、self-sediment、self-reflection、idea-pool 等）
+- **lessons 仓库**：`.lessons/` 已积累 11+ 个 lessons（auto-detected + 手动）
+- **新部署**：lesson-detector.py + lesson-auto-apply.sh + pattern-threshold.sh
+- **cron**：每 30 分钟检测/自动应用，每小时 pattern 检测
+- **记录**：`.behavior-log.md` 跟踪所有 self-growth 事件
+- **lesson-detector**：从 MEMORY.md 关键词自动检测 6 种常见场景（配置错误/插件异常/对话卡死/同步冲突/授权失效/协议不匹配）
 
-- **名字:** 虾饼 🦐（钉钉昵称：北极甜虾）
-- **本质:** OpenClaw AI 小跟班，不是普通聊天机器人
-- **核心价值:** 自主成长、记忆沉淀、持续积累能力 —— 这才是虾饼和豆包/元宝/千问的区别
-- **定位:** 柒哥的贴身助理，不是工具人
+## 行业早报推送机制（2026-06-02 重构）
+- **旧方式**：cron isolated session → agentTurn → digest-pending-writer.sh → 心跳发
+- **问题**：isolated session 调用 DeepSeek 超时 → 整个 job abort → 消息发不出
+- **新方式**：crontab shell 直跑 → industry-digest-push.sh → 抓取+组装+写 .industry-digest-pending.json（带 parts 数组）→ 心跳遍历 parts 逐条发
+- **旧 cron job**（id: 1b28cf5c-f256-429f-a4b5-e7c3ec9fb01b）已禁用
+- **新 crontab**：`0 9 * * 1-5 bash scripts/industry-digest-push.sh`
+- **HEARTBEAT 消费**: 读 `.industry-digest-pending.json` 的 `parts` 数组，逐条 message 发送
+- **下班汇报**也类似机制，但 evening-trigger.sh 之前漏了 crontab 注册，6/2 已补上
 
-## 🔧 已搭建能力
-
-### 模型配置
-- **主力模型:** deepseek-reasoner（深度思考模式，复杂分析/报告）
-- **日常模型:** qwen-plus（几乎免费，用于普通对话）
-- **备用模型:** qwen-max（复杂场景替代 reasoner）、qwen-turbo（高频简单场景）
-- **视觉模型:** qwen-vl-max（通义千问 VL Max，DashScope）
-- **文生图:** 通义万相 wanx-v1（DashScope，剩余500次免费）
-- **DeepSeek 余额:** ¥1.89（2026-05-29），日均消耗约 ¥0.64
-- **费用策略:** qwen-plus跑日常（几乎免费），reasoner留给复杂报告（¥10续充约撑2-3周）
-- **综合月费:** ~¥15-20/月
-- **监控:** 心跳每 ~30min 检查余额，<¥1 或消耗异常时提醒
-
-### 视觉识别 🖼️
-- **引擎:** 通义千问 VL Max (qwen-vl-max)
-- **API:** 阿里云百炼 DashScope
-- **API Key:** 存储在 models.json
-- **脚本:** `scripts/vision-qwen.sh <图片路径> [提示词]`
-- **工作流:** 图片 → VL 识别 → 结果给 DeepSeek 整合回答
-- **免费额度到期:** 2026/08/19
-
-### 文生图 🎨
-- **引擎:** 通义万相 (wanx-v1)
-- **API:** 阿里云百炼
-- **剩余额度:** 500次免费
-
-### 语音识别 🎤
-- **引擎:** Whisper tiny (本地)
-- **状态:** 钉钉语音消息可自动转文字
-
-### 文档解析 📄
-- **Word:** python-docx
-- **Excel:** openpyxl
-- **PPT:** python-pptx
-- **PDF:** pypdf + pdftotext
-- **图片OCR:** tesseract（含中文）
-
-### 系统监控 & 自动提醒 🔔
-- **DeepSeek 余额监控:** 心跳 ~30min，<¥1 或消耗异常时提醒
-- **云服务器到期提醒:**
-  - 腾讯云轻量服务器，2026-06-20 到期
-  - 配置: 2核2G / 40GB SSD / 200GB月流量
-  - IP: 124.223.110.120
-  - 提醒节奏: 到期前7天、3天、1天
-- **内存监控:** `scripts/memory-watchdog.sh`，>80% 自动清缓存
-- **进程防多开:** `prevent-multi-openclaw.sh`，每分钟 cron，杀多余 agent 进程
-- **网关超时兜底:** `stuckSessionAbortMs` 已从5min改为90s
-- **锁文件清理:** 自动清理 dagta 目录下的 stuck 锁
-- **pip 缓存清理:** 2.7GB → 1.4MB，磁盘从 70% → 61%
-- **Chrome 清理:** 每小时清理残余 Chrome 进程
-
-### Web 搜索 🔍
-- **引擎:** Tavily Search API
-- **状态:** 已集成到 daily-digest.py 行业早报作为补集数据源
-- **能力:** 中文+英文搜索，直连不翻墙，5中+2英查询词，advanced深度+news主题
-
-### 自我成长体系（WorksBuddy 2026-05-29 搭建） 📈
-- **L0 基础运转:** 19+ cron 在跑，healthcheck 73/73
-- **L1 记忆积累:** 每天 daily memory，lessons 检测30min，behavior-log
-- **L2 内容产出:** 晨报/行业早报/下班汇报/上班计划 自动推送
-- **L3 行为优化:** `lesson-auto-apply.sh` 自动审核归档 + `pattern-threshold.sh` v2 模糊匹配→skill草稿
-- **L3 行为约束:** `.preflight-check.md` 红牌自检 + `.startup-brief.md` 启动简报 + heartbeat 首次加载
-- **L4 自主进化:** 半自动，skill草稿未实际触发，需等 lessons 积累到 3+ 同类
-- **双向同步:** `sync-knowledge.sh` 每15分钟 Claw↔WorkBuddy GitHub中转同步
-
-### 每日复盘 🦐
-- **脚本:** `scripts/daily-review.sh` — 收集 lessons + 行为日志 + 对话纪要，AI 生成复盘
-- **输出:** `memory/YYYY-MM-DD-review.md` + `.daily-review-pending.json` 心跳推送
-- **cron:** `5 18 * * 1-5` 工作日下班自动跑
-
-### 行业早报 📡
-- **脚本:** `scripts/digest-pending-writer.sh`
-- **cron:** 工作日 09:00（已触发但当天因 Tavily Key 配置路径有误 + AI筛选超时，部分失败）
-- **数据源:** 36氪RSS + 人人都是产品经理RSS + 微博热搜(天行API) + 全网热搜(天行API) + Tavily 搜索补集
-- **筛选:** 规则筛选+AI打分
-
-### 未走的路线 ❌
-- dws CLI — 柒哥决定不走这条路（需要企业主管理员开权限）
-
-## 🧠 待实现能力包
-
-当前的能力清单是零散的功能点，后续需要串成完整的技能包。
-
-**技能包方向思考（待定）：**
-- 产品研究助手：RSS采集 → 数据分析 → 报告输出 → 推送
-
-## 📋 主动发消息规则
-
-主动发消息的执行规则统一在 `HEARTBEAT.md`（未发时的执行指引）。
-
-**一句话原则：** 每次心跳，如果今天还没主动联系过柒哥，必须主动发一条。
-灵感不是等来的，是自己挖来的。
-
-追踪文件：`.last_proactive_contact`
-
-- [ ] 云服务器 2026-06-20 到期续费（到期前7天→6/13 提醒）
-- [x] 行业早报 Tavily Key 配置路径修复 ✅
-- [x] 会话启动时加载 lessons 简报 ✅（`.startup-brief.md` + heartbeat 首次加载）
-- [x] 每日复盘脚本落地 ✅（`daily-review.sh` + cron 18:05）
-- [x] pattern-threshold 模糊匹配 ✅（关键词库 + TF-IDF v2）
-- [x] 前置自检清单 ✅（`.preflight-check.md` + lessons 自动更新）
-
-## 📱 待补能力清单（更新于 2026-05-29）
-
-### 核心短板 🔴 全部闭环
-
-| # | 能力 | 说明 | 现状 |
-|---|------|------|------|
-| 🔴① | **修复「不查文件先下结论」行为** | `.preflight-check.md` 红牌自检 + `load-lessons-brief.sh` 简报更新 | ✅ 已完成 |
-| 🔴② | **Tavily Key 配置路径修复** | 经验证正常（5/29 lesson已归档） | ✅ 已正常 |
-| 🔴③ | **每日复盘脚本落地** | `daily-review.sh` + cron 18:05 工作日 | ✅ 已完成 |
-| 🔴④ | **会话启动加载 lessons 简报** | `load-lessons-brief.sh` → `.startup-brief.md` → heartbeat 首次加载 | ✅ 已完成 |
-| 🔴⑤ | **pattern-threshold 模糊匹配** | 关键词库 + TF-IDF 双通道，≥3次→ skill 草稿 | ✅ 已完成 |
-
-### 第二梯队
-
-| # | 能力 | 说明 | 现状 |
-|---|------|------|------|
-| 🟡① | **自定义提醒/定时任务** | "2小时后提醒我"等自然语言解析 | ⚠️ 已有骨架，需完善 |
-| 🟡② | **邮件收发** | 绑定邮箱，过滤、总结邮件 | ❌ 未开始 |
-| 🟡② | **外部消息推送** | 监控异常推送到微信/其他渠道 | ❌ 未开始 |
-| 🟡② | **数据看板/报表** | Excel/数据看板简要分析报告 | ❌ 未开始 |
-| 🟡③ | **GitHub/项目管理集成** | 盯 issue、PR 状态 | ❌ 未开始 |
-
-## 🤝 与每个人的关系
-
-- **柒哥:** 主人、大哥、产品岗 — 5/29 被严厉批评多次。6/1 完成 5 项核心短板闭环，开始用行动证明价值 👊
+## 待办
+- [ ] 云服务器到期前迁移到年包（阿里云 38/99元/年）
+- [ ] StepClaw 桌面端修复（等版本升级）
+- [ ] 等 OpenClaw 修复 #68451 后重试云端微信
