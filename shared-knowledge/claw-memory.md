@@ -29,12 +29,6 @@
 - 凭证文件路径：`~/.openclaw/openclaw-weixin/accounts/`
 - 元宝 Claw 依赖 WorkBuddy 桌面桥接，无法 24h 独立运行
 
-## WorkBuddy ⇄ Claw 同步协作（2026-06-02 建立）
-- **SYNC.md** — 唯一的变更同步日志，修改前先读最新 serial，改完追加
-- 需同步的操作：改 openclaw.json、scripts/、systemd、.env、crontab
-- 不需同步：日常会话、lesson、session
-- WorkBuddy 今早修复了：恢复 inline apiKey、加 systemd EnvironmentFile、.env 不可变、部署 guardian.sh、升级 claw-startup-check.sh v2
-
 ## 钉钉 Claw 自我成长体系
 - **已有体系**：云服务器 scripts/ 目录下有完整的自成长脚本（daily-summary、self-sediment、self-reflection、idea-pool 等）
 - **lessons 仓库**：`.lessons/` 已积累 11+ 个 lessons（auto-detected + 手动）
