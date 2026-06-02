@@ -11,3 +11,5 @@
 [2026-06-02 10:05:52] 📥 WorkBuddy 同步: sync-protocol.md
 [2026-06-02 11:34:40] 📥 WorkBuddy 同步: workbuddy-rules-overview.md
 [2026-06-02 11:34:44] 📥 WorkBuddy 同步: workbuddy-rules-overview.md
+[2026-06-02 11:38:16] 📥 WorkBuddy 同步: claw-behavior-rules.md
+[2026-06-02 11:38:16] 📥 WorkBuddy 同步: workbuddy-rules-overview.md
