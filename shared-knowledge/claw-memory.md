@@ -10,9 +10,10 @@
 ## 云服务器（腾讯云）
 - IP：124.223.110.120，用户：ubuntu
 - OS：Ubuntu 24.04 LTS，月包试用
-- OpenClaw：v2026.5.18（npm 最新版）
-- 服务：systemd 托管，开机自启
-- 模型：DeepSeek（deepseek-chat + deepseek-reasoner）
+- OpenClaw：v2026.5.28
+- 服务：systemd 托管，开机自启，EnvironmentFile 加载 .env
+- API key：~/.openclaw/.env（chattr +i 不可变）
+- 模型：deepseek/deepseek-chat → fallback: dashscope/qwen-max
 - 渠道：钉钉 ✅ | 微信 ❌（OpenClaw bug #68451 未修复）
 
 ## 本地 OpenClaw
@@ -28,6 +29,12 @@
 - 凭证文件路径：`~/.openclaw/openclaw-weixin/accounts/`
 - 元宝 Claw 依赖 WorkBuddy 桌面桥接，无法 24h 独立运行
 
+## WorkBuddy ⇄ Claw 同步协作（2026-06-02 建立）
+- **SYNC.md** — 唯一的变更同步日志，修改前先读最新 serial，改完追加
+- 需同步的操作：改 openclaw.json、scripts/、systemd、.env、crontab
+- 不需同步：日常会话、lesson、session
+- WorkBuddy 今早修复了：恢复 inline apiKey、加 systemd EnvironmentFile、.env 不可变、部署 guardian.sh、升级 claw-startup-check.sh v2
+
 ## 钉钉 Claw 自我成长体系
 - **已有体系**：云服务器 scripts/ 目录下有完整的自成长脚本（daily-summary、self-sediment、self-reflection、idea-pool 等）
 - **lessons 仓库**：`.lessons/` 已积累 11+ 个 lessons（auto-detected + 手动）
@@ -36,16 +43,8 @@
 - **记录**：`.behavior-log.md` 跟踪所有 self-growth 事件
 - **lesson-detector**：从 MEMORY.md 关键词自动检测 6 种常见场景（配置错误/插件异常/对话卡死/同步冲突/授权失效/协议不匹配）
 
-## 行业早报推送机制（2026-06-02 重构）
-- **旧方式**：cron isolated session → agentTurn → digest-pending-writer.sh → 心跳发
-- **问题**：isolated session 调用 DeepSeek 超时 → 整个 job abort → 消息发不出
-- **新方式**：crontab shell 直跑 → industry-digest-push.sh → 抓取+组装+写 .industry-digest-pending.json（带 parts 数组）→ 心跳遍历 parts 逐条发
-- **旧 cron job**（id: 1b28cf5c-f256-429f-a4b5-e7c3ec9fb01b）已禁用
-- **新 crontab**：`0 9 * * 1-5 bash scripts/industry-digest-push.sh`
-- **HEARTBEAT 消费**: 读 `.industry-digest-pending.json` 的 `parts` 数组，逐条 message 发送
-- **下班汇报**也类似机制，但 evening-trigger.sh 之前漏了 crontab 注册，6/2 已补上
-
 ## 待办
 - [ ] 云服务器到期前迁移到年包（阿里云 38/99元/年）
 - [ ] StepClaw 桌面端修复（等版本升级）
+- [x] env.conf — 已废弃，由 .env + EnvironmentFile 覆盖
 - [ ] 等 OpenClaw 修复 #68451 后重试云端微信
