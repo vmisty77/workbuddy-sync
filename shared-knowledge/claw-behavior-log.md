@@ -23,3 +23,4 @@
 [2026-06-02 11:43:10] 📥 WorkBuddy 同步: sync-usage.md
 [2026-06-02 17:40:38] 📥 WorkBuddy 同步: proactive-messaging.md
 [2026-06-02 17:40:43] 📥 WorkBuddy 同步: proactive-messaging.md
+[2026-06-03 10:47:12] 📥 WorkBuddy 同步: skills-updated.md
