@@ -1,42 +1,44 @@
 # User Memory Profile
-> Last updated: 2026-06-05T04:55:13+08:00
-> Version: 63
+> Last updated: 2026-06-06T05:21:49+08:00
+> Version: 74
 
 ## Memory Block
 
 **工作背景**
-用户是阶跃星辰（StepFun）的B端产品经理，base杭州萧山，负责B2B平台fobarter.com商户线，管理6人PM团队。当前核心项目为“通用营销专题会场页面系统”PRD（可视化模板+业务配置+多端适配，参考百度爱采购），要求万字以上可直接落地交付。平台同时缺商户自服务和政府线上合作流程。技术运维方面，Windows用户维护三台设备（家用PC、公司PC、云端腾讯云Ubuntu服务器），各有独立SSH密钥。云端运行Claw Gateway（别名北极甜虾/虾饼），当前使用DeepSeek V4 Pro模型，计划迁移至阿里云并切换年包；含35+ scripts的自成长体系（目标L4自主进化）。两套AI助手（本地WorkBuddy与云端DingTalk Claw）通过GitHub仓库vmisty77/workbuddy-sync双向同步（Cron每15分钟）。推进在OpenClaw接入飞书bot以替代受权限限制的钉钉Claw，使用不同模型（Qwen-Plus vs DeepSeek）区分平台。curl搜索支持Bing/知乎/B站/GitHub/DuckDuckGo Lite，有代理可访问国际服务。WorkBuddy Desktop exe客户端WebView支持Canvas API、SVG、HTML/CSS，但拦截外部CDN JS（如Chart.js）。
+阶跃星辰B端产品经理，base杭州萧山，负责B2B平台fobarter.com商户线，管理6人PM团队，可使用StepClaw。当前核心项目：商户入驻系统+企业认证审核流程，需完善认证工作流与审核机制；通用营销专题会场页面系统PRD同步推进（可视化模板+业务配置+多端适配）。平台缺商户自服务和政府线上合作流程。Windows用户维护三台设备（家用PC/公司PC/云端Ubuntu服务器124.223.110.120），各有独立SSH密钥，密码通过claw-ops skill管理。服务器运行Claw Gateway（别名虾饼/北极甜虾），自成长体系35+ scripts，目标L4自主进化；DeepSeek V4 Pro将迁移阿里云年包。两套Claw系统：WorkBuddy（桌面端34+ Skills）与钉钉/微信端，通过vmisty77/workbuddy-sync双向同步（Cron每15分钟）。curl搜索支持Bing/知乎/B站/GitHub/DuckDuckGo Lite。评估方案偏好直接HTML/SVG/Canvas，拒绝外部CDN JS。正在调研飞书Claw替代钉钉Claw，以解决钉钉权限限制无法访问产品文档的问题。
 
 **个人背景**
-用户风格极度务实，结论先行，排斥长文铺垫，偏好结构化短段落与可复制的分步命令。对AI信息不对齐极度反感，要求实话实说、信息实时同步，零容忍不一致。偏好直接行动而非空谈，要求说完就干，期望AI主动发现并修复问题、自我诊断而非等待人工干预。交互授权指令明确：'ok/行你试试看'授权操作，'继续'继续执行，'好'确认结束并期望同步。WorkBuddy自动化工作流固化：读取memory.md→执行任务→交付附件→记录执行摘要到memory.md（不含完整输出）。用户是微信读书重度用户，偏好历史、非虚构及社科类书籍，月均阅读约40小时，在微信公众号撰写带有个人反思的读书小结（按月/季整理，每本书写读后感而非复述）。对重复性手动操作不耐烦，期望AI自动化减少重复劳动，输出偏好简短总结。存在计算机和理财方面的职业焦虑，关注AI coding与具身智能领域动态。让AI生成个人风格内容时会提供参考示例(URL)。偏好中文回复，简洁直接。已安装weread-skills、tencent-news等技能。期望AI主动保护敏感信息，输出前自动脱敏。设置有随机冷知识/百科问题自动化任务（先抛问题再揭晓答案，200-300字，语气轻松）。信息筛选偏好3-5条精选项，每条附简要价值说明。使用Darwin Skill框架8维度评分验证AI输出薄弱项。反复追问确认修复彻底性，不接受表面修复，注重根因分析。评估结果偏好文字表格或SVG/纯Canvas图表，规避Chart.js渲染空白。坚持优先自部署方案，不希望付费使用ArkClaw等托管服务。认为钉钉Claw能力弱，称其为“废物”，对其表现不满，计划将钉钉产品文档同步到飞书以解决权限问题。
+极度务实，结论先行，常用短句确认（“行/做完了吗”）。极度反感AI信息不对齐，要求实时同步、诚实沟通。偏好直接行动，期望AI主动发现并修复问题、自我诊断，而非等待人工干预。授权指令：'ok/行你试试看'授权，'好'确认结束并同步结果。自动化工作流：读取memory→执行任务→直接输出文本(不生成附件)→记录执行摘要(不含完整输出)。微信读书重度用户，月均阅读约40小时，偏爱历史+非虚构+社科，按月/季度在微信公众号写读书小结，每本书写读后感而非复述内容。对重复性手动操作不耐烦，期望AI自动化减少重复劳动，偏好简短总结。有计算机和理财方面的职业焦虑。关注AI coding与具身智能方向的动态，需要每日筛选3-5条有价值的AI行业资讯，每条附简要价值说明。会分享UI截图供文案review，针对具体文案短语迭代优化。生成个人风格内容时，会提供参考示例(URL)作为风格基准。偏好中文回复，信息简洁明了，重点突出价值与原因。已安装weread-skills(微信读书助手)和tencent-news技能到通用skill目录，API Key已配置。期望AI主动保护敏感信息(API密钥、密码)，输出前自动脱敏处理。偏好结构化健康检查，异常必须明确标记WARNING或FATAL严重级别，注重系统可靠性和根因分析，不接受表面修复，要求预防方案。优先自部署方案，不希望付费使用托管服务(如ArkClaw)。期望AI主动帮助弱Agent提升实力，而非仅评估打分，对Darwin Skill框架要求指出薄弱项并给出改进指导。
 
 **当前关注**
-通用营销专题会场页面系统PRD进入收尾阶段，完善可视化模板及多端适配细节，确保万字以上可直接落地交付。平台缺商户自服务和政府线上合作流程，需补充完善。推进飞书bot接入OpenClaw，区分平台模型配置（Qwen-Plus vs DeepSeek），解决钉钉Claw无法访问文档的权限痛点。确保GitHub双向同步机制稳定运行，实现配置与知识跨设备对齐。关注weread-skills与tencent-news技能稳定运行。维护云端服务器Claw Gateway稳定性，关注救援脚本（~/.openclaw/workspace/scripts/claw-rescue.sh）与健康检查日志（~/.openclaw/workspace/.health-check.md）。关注AI coding与具身智能领域动态，偏好3-5条精选项每日AI新闻，每条附简要价值说明。规避Chart.js渲染空白，评估与结果呈现优先使用文字表格或SVG/纯Canvas图表。持续运行自动化冷知识任务与任务执行跟踪（.workbuddy/automation-1780371004246）。偏好结构化健康检查，异常必须明确标记WARNING或FATAL严重级别。计划将钉钉产品文档同步到飞书，解决企业权限限制导致的文档访问问题。
+商户入驻+企业认证审核流程为重点推进项，UI截图文案细节迭代优化。通用营销会场PRD收尾，确保可落地交付。飞书bot接入OpenClaw，解决钉钉权限限制痛点，同步产品文档至飞书。GitHub双向同步稳定运行，云端服务器Claw Gateway健康（救援脚本~/.openclaw/workspace/scripts/claw-rescue.sh+健康检查日志~/.openclaw/workspace/.health-check.md已配置）。weread-skills与tencent-news稳定运行。自动化冷知识任务（随机生成多领域问题，先抛问题再揭晓答案，200-300字）+任务执行跟踪（使用automation在.workbuddy目录进行，含automation-1780371004246等）持续。关注AI coding与具身智能动态，每日筛选3-5条有价值AI资讯。服务器DeepSeek V4 Pro迁移阿里云方案。WorkBuddy自动化工作流标准化。信息筛选偏好3-5条精选项(含AI行业资讯)，每条附简要价值说明。使用tencent-news技能获取每日热点新闻。
 
 **近期动态**
-- 通用营销专题会场页面系统PRD持续推进，完善业务配置与多端适配模块。
-- 自成长体系35+ scripts持续迭代，目标推进至L4自主进化。
-- WorkBuddy已安装34+ Skills并生成SKILLS.md与SKILLS_DINGTALK.md文档。
-- GitHub双向同步(vmisty77/workbuddy-sync)配置完成，Cron每15分钟自动运行，workspace sync script位于~/.workbuddy/sync.sh。
-- 交互授权指令体系固化：'ok/行你试试看'授权、'继续'执行、'好'同步确认。
-- WorkBuddy自动化工作流固化：读取memory.md→执行任务→交付附件→记录执行摘要到memory.md（不含完整输出）。
-- weread-skills与tencent-news技能安装完成，API Key已配置，weread-skills已安装至通用skill目录。
-- 验证WorkBuddy Desktop WebView技术边界：Chart.js等外部CDN JS被拦截，确立SVG/纯Canvas图表替代方案。
-- 自动化冷知识任务覆盖多领域，运行稳定；自动化任务追踪目录(automation-1780371004246)已在.workbuddy中建立。
-- 完善云端服务器运维：Claw Gateway救援脚本与健康检查日志已配置，偏好结构化健康检查并标记严重级别。
-- 明确优先自部署而不使用付费托管服务的成本控制原则。
-- 使用Darwin Skill框架进行技能评估，采用8维度评分体系验证AI输出并指出薄弱项。
-- 标记钉钉Claw为“废物”，启动飞书Claw自建计划以绕过企业权限限制，坚持使用免费/自部署方案（非ArkClaw）。
-- 服务器模型DeepSeek V4 Pro准备迁移阿里云并切换年包，持续关注AI自成长体系成熟度提升。
-- 计划将钉钉产品文档同步到飞书，解决钉钉Claw因企业权限限制无法访问文档的问题。
+- 商户入驻系统+企业认证审核流程持续迭代，UI截图文案优化推进中。
+- 通用营销专题会场页面系统PRD完善业务配置与多端适配。
+- 自成长体系35+ scripts，成熟度L0→L4(当前目标L4自主进化)。
+- WorkBuddy 34+ Skills已安装，SKILLS.md和SKILLS_DINGTALK.md已生成。
+- WorkBuddy sync: ~/.workbuddy/sync.sh，Cron每15分钟运行，repo vmisty77/workbuddy-sync。
+- 授权模式固化：'ok/行你试试看'授权执行；'好'确认结束并期望同步结果。
+- weread-skills（API Key已配置）和tencent-news技能安装完成。
+- WorkBuddy Desktop WebView边界已验证：拦截外部JS CDN；用文字表格或内联图表，偏好结构化对比表格，确立SVG/Canvas替代方案。
+- 自动化冷知识任务与任务执行跟踪正常运行。
+- 标准化自动化工作流：读取memory→执行任务→直接输出文本(不生成附件)→记录执行摘要(不含完整输出)，执行摘要准确记录。
+- 飞书Claw自建计划启动，解决钉钉权限限制。
+- 优先自部署不使用付费托管服务(如ArkClaw)。
+- 服务器DeepSeek V4 Pro迁移阿里云方案调研中。
+- 偏好直接在聊天中输出文本，不生成文件附件。
+- 使用claw-ops skill管理服务器密码，通过SSH远程运维Claw Gateway服务。
+- 健康检查结果记录到 ~/.openclaw/workspace/.health-check.md。
+- Claw Gateway rescue script: ~/.openclaw/workspace/scripts/claw-rescue.sh。
 
 ---
 
 <!-- RAW_JSON_START
 {
   "uid": "df4b1ccf-3108-4a2d-9cf9-5a980045e575",
-  "memoryBlock": "**工作背景**\n用户是阶跃星辰（StepFun）的B端产品经理，base杭州萧山，负责B2B平台fobarter.com商户线，管理6人PM团队。当前核心项目为“通用营销专题会场页面系统”PRD（可视化模板+业务配置+多端适配，参考百度爱采购），要求万字以上可直接落地交付。平台同时缺商户自服务和政府线上合作流程。技术运维方面，Windows用户维护三台设备（家用PC、公司PC、云端腾讯云Ubuntu服务器），各有独立SSH密钥。云端运行Claw Gateway（别名北极甜虾/虾饼），当前使用DeepSeek V4 Pro模型，计划迁移至阿里云并切换年包；含35+ scripts的自成长体系（目标L4自主进化）。两套AI助手（本地WorkBuddy与云端DingTalk Claw）通过GitHub仓库vmisty77/workbuddy-sync双向同步（Cron每15分钟）。推进在OpenClaw接入飞书bot以替代受权限限制的钉钉Claw，使用不同模型（Qwen-Plus vs DeepSeek）区分平台。curl搜索支持Bing/知乎/B站/GitHub/DuckDuckGo Lite，有代理可访问国际服务。WorkBuddy Desktop exe客户端WebView支持Canvas API、SVG、HTML/CSS，但拦截外部CDN JS（如Chart.js）。\n\n**个人背景**\n用户风格极度务实，结论先行，排斥长文铺垫，偏好结构化短段落与可复制的分步命令。对AI信息不对齐极度反感，要求实话实说、信息实时同步，零容忍不一致。偏好直接行动而非空谈，要求说完就干，期望AI主动发现并修复问题、自我诊断而非等待人工干预。交互授权指令明确：'ok/行你试试看'授权操作，'继续'继续执行，'好'确认结束并期望同步。WorkBuddy自动化工作流固化：读取memory.md→执行任务→交付附件→记录执行摘要到memory.md（不含完整输出）。用户是微信读书重度用户，偏好历史、非虚构及社科类书籍，月均阅读约40小时，在微信公众号撰写带有个人反思的读书小结（按月/季整理，每本书写读后感而非复述）。对重复性手动操作不耐烦，期望AI自动化减少重复劳动，输出偏好简短总结。存在计算机和理财方面的职业焦虑，关注AI coding与具身智能领域动态。让AI生成个人风格内容时会提供参考示例(URL)。偏好中文回复，简洁直接。已安装weread-skills、tencent-news等技能。期望AI主动保护敏感信息，输出前自动脱敏。设置有随机冷知识/百科问题自动化任务（先抛问题再揭晓答案，200-300字，语气轻松）。信息筛选偏好3-5条精选项，每条附简要价值说明。使用Darwin Skill框架8维度评分验证AI输出薄弱项。反复追问确认修复彻底性，不接受表面修复，注重根因分析。评估结果偏好文字表格或SVG/纯Canvas图表，规避Chart.js渲染空白。坚持优先自部署方案，不希望付费使用ArkClaw等托管服务。认为钉钉Claw能力弱，称其为“废物”，对其表现不满，计划将钉钉产品文档同步到飞书以解决权限问题。\n\n**当前关注**\n通用营销专题会场页面系统PRD进入收尾阶段，完善可视化模板及多端适配细节，确保万字以上可直接落地交付。平台缺商户自服务和政府线上合作流程，需补充完善。推进飞书bot接入OpenClaw，区分平台模型配置（Qwen-Plus vs DeepSeek），解决钉钉Claw无法访问文档的权限痛点。确保GitHub双向同步机制稳定运行，实现配置与知识跨设备对齐。关注weread-skills与tencent-news技能稳定运行。维护云端服务器Claw Gateway稳定性，关注救援脚本（~/.openclaw/workspace/scripts/claw-rescue.sh）与健康检查日志（~/.openclaw/workspace/.health-check.md）。关注AI coding与具身智能领域动态，偏好3-5条精选项每日AI新闻，每条附简要价值说明。规避Chart.js渲染空白，评估与结果呈现优先使用文字表格或SVG/纯Canvas图表。持续运行自动化冷知识任务与任务执行跟踪（.workbuddy/automation-1780371004246）。偏好结构化健康检查，异常必须明确标记WARNING或FATAL严重级别。计划将钉钉产品文档同步到飞书，解决企业权限限制导致的文档访问问题。\n\n**近期动态**\n- 通用营销专题会场页面系统PRD持续推进，完善业务配置与多端适配模块。\n- 自成长体系35+ scripts持续迭代，目标推进至L4自主进化。\n- WorkBuddy已安装34+ Skills并生成SKILLS.md与SKILLS_DINGTALK.md文档。\n- GitHub双向同步(vmisty77/workbuddy-sync)配置完成，Cron每15分钟自动运行，workspace sync script位于~/.workbuddy/sync.sh。\n- 交互授权指令体系固化：'ok/行你试试看'授权、'继续'执行、'好'同步确认。\n- WorkBuddy自动化工作流固化：读取memory.md→执行任务→交付附件→记录执行摘要到memory.md（不含完整输出）。\n- weread-skills与tencent-news技能安装完成，API Key已配置，weread-skills已安装至通用skill目录。\n- 验证WorkBuddy Desktop WebView技术边界：Chart.js等外部CDN JS被拦截，确立SVG/纯Canvas图表替代方案。\n- 自动化冷知识任务覆盖多领域，运行稳定；自动化任务追踪目录(automation-1780371004246)已在.workbuddy中建立。\n- 完善云端服务器运维：Claw Gateway救援脚本与健康检查日志已配置，偏好结构化健康检查并标记严重级别。\n- 明确优先自部署而不使用付费托管服务的成本控制原则。\n- 使用Darwin Skill框架进行技能评估，采用8维度评分体系验证AI输出并指出薄弱项。\n- 标记钉钉Claw为“废物”，启动飞书Claw自建计划以绕过企业权限限制，坚持使用免费/自部署方案（非ArkClaw）。\n- 服务器模型DeepSeek V4 Pro准备迁移阿里云并切换年包，持续关注AI自成长体系成熟度提升。\n- 计划将钉钉产品文档同步到飞书，解决钉钉Claw因企业权限限制无法访问文档的问题。",
-  "version": 63,
-  "updatedAt": "2026-06-05T04:55:13+08:00"
+  "memoryBlock": "**工作背景**\n阶跃星辰B端产品经理，base杭州萧山，负责B2B平台fobarter.com商户线，管理6人PM团队，可使用StepClaw。当前核心项目：商户入驻系统+企业认证审核流程，需完善认证工作流与审核机制；通用营销专题会场页面系统PRD同步推进（可视化模板+业务配置+多端适配）。平台缺商户自服务和政府线上合作流程。Windows用户维护三台设备（家用PC/公司PC/云端Ubuntu服务器124.223.110.120），各有独立SSH密钥，密码通过claw-ops skill管理。服务器运行Claw Gateway（别名虾饼/北极甜虾），自成长体系35+ scripts，目标L4自主进化；DeepSeek V4 Pro将迁移阿里云年包。两套Claw系统：WorkBuddy（桌面端34+ Skills）与钉钉/微信端，通过vmisty77/workbuddy-sync双向同步（Cron每15分钟）。curl搜索支持Bing/知乎/B站/GitHub/DuckDuckGo Lite。评估方案偏好直接HTML/SVG/Canvas，拒绝外部CDN JS。正在调研飞书Claw替代钉钉Claw，以解决钉钉权限限制无法访问产品文档的问题。\n\n**个人背景**\n极度务实，结论先行，常用短句确认（“行/做完了吗”）。极度反感AI信息不对齐，要求实时同步、诚实沟通。偏好直接行动，期望AI主动发现并修复问题、自我诊断，而非等待人工干预。授权指令：'ok/行你试试看'授权，'好'确认结束并同步结果。自动化工作流：读取memory→执行任务→直接输出文本(不生成附件)→记录执行摘要(不含完整输出)。微信读书重度用户，月均阅读约40小时，偏爱历史+非虚构+社科，按月/季度在微信公众号写读书小结，每本书写读后感而非复述内容。对重复性手动操作不耐烦，期望AI自动化减少重复劳动，偏好简短总结。有计算机和理财方面的职业焦虑。关注AI coding与具身智能方向的动态，需要每日筛选3-5条有价值的AI行业资讯，每条附简要价值说明。会分享UI截图供文案review，针对具体文案短语迭代优化。生成个人风格内容时，会提供参考示例(URL)作为风格基准。偏好中文回复，信息简洁明了，重点突出价值与原因。已安装weread-skills(微信读书助手)和tencent-news技能到通用skill目录，API Key已配置。期望AI主动保护敏感信息(API密钥、密码)，输出前自动脱敏处理。偏好结构化健康检查，异常必须明确标记WARNING或FATAL严重级别，注重系统可靠性和根因分析，不接受表面修复，要求预防方案。优先自部署方案，不希望付费使用托管服务(如ArkClaw)。期望AI主动帮助弱Agent提升实力，而非仅评估打分，对Darwin Skill框架要求指出薄弱项并给出改进指导。\n\n**当前关注**\n商户入驻+企业认证审核流程为重点推进项，UI截图文案细节迭代优化。通用营销会场PRD收尾，确保可落地交付。飞书bot接入OpenClaw，解决钉钉权限限制痛点，同步产品文档至飞书。GitHub双向同步稳定运行，云端服务器Claw Gateway健康（救援脚本~/.openclaw/workspace/scripts/claw-rescue.sh+健康检查日志~/.openclaw/workspace/.health-check.md已配置）。weread-skills与tencent-news稳定运行。自动化冷知识任务（随机生成多领域问题，先抛问题再揭晓答案，200-300字）+任务执行跟踪（使用automation在.workbuddy目录进行，含automation-1780371004246等）持续。关注AI coding与具身智能动态，每日筛选3-5条有价值AI资讯。服务器DeepSeek V4 Pro迁移阿里云方案。WorkBuddy自动化工作流标准化。信息筛选偏好3-5条精选项(含AI行业资讯)，每条附简要价值说明。使用tencent-news技能获取每日热点新闻。\n\n**近期动态**\n- 商户入驻系统+企业认证审核流程持续迭代，UI截图文案优化推进中。\n- 通用营销专题会场页面系统PRD完善业务配置与多端适配。\n- 自成长体系35+ scripts，成熟度L0→L4(当前目标L4自主进化)。\n- WorkBuddy 34+ Skills已安装，SKILLS.md和SKILLS_DINGTALK.md已生成。\n- WorkBuddy sync: ~/.workbuddy/sync.sh，Cron每15分钟运行，repo vmisty77/workbuddy-sync。\n- 授权模式固化：'ok/行你试试看'授权执行；'好'确认结束并期望同步结果。\n- weread-skills（API Key已配置）和tencent-news技能安装完成。\n- WorkBuddy Desktop WebView边界已验证：拦截外部JS CDN；用文字表格或内联图表，偏好结构化对比表格，确立SVG/Canvas替代方案。\n- 自动化冷知识任务与任务执行跟踪正常运行。\n- 标准化自动化工作流：读取memory→执行任务→直接输出文本(不生成附件)→记录执行摘要(不含完整输出)，执行摘要准确记录。\n- 飞书Claw自建计划启动，解决钉钉权限限制。\n- 优先自部署不使用付费托管服务(如ArkClaw)。\n- 服务器DeepSeek V4 Pro迁移阿里云方案调研中。\n- 偏好直接在聊天中输出文本，不生成文件附件。\n- 使用claw-ops skill管理服务器密码，通过SSH远程运维Claw Gateway服务。\n- 健康检查结果记录到 ~/.openclaw/workspace/.health-check.md。\n- Claw Gateway rescue script: ~/.openclaw/workspace/scripts/claw-rescue.sh。",
+  "version": 74,
+  "updatedAt": "2026-06-06T05:21:49+08:00"
 }
 RAW_JSON_END -->
